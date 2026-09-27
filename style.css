@@ -1,0 +1,676 @@
+
+:root {
+  --background: #f3f5fa;
+  --surface: #ffffff;
+  --text: #20283e;
+  --muted: #626c80;
+  --accent: #5145cd;
+  --accent-light: #eeecff;
+  --line: #dce1ec;
+  --space: 1rem;
+  --radius: 0.9rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+h2 {
+  font-size: 1.35rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 0.2rem solid var(--accent);
+  outline-offset: 0.2rem;
+}
+
+.page {
+  padding: clamp(1rem, 4vw, 4rem);
+}
+
+.page-heading {
+  margin-bottom: 2rem;
+}
+
+.page-heading h1 {
+  margin-block: 0.5rem 1rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.section > h2 {
+  margin-bottom: var(--space);
+}
+
+.button {
+  padding: 0.7rem 1.1rem;
+  border: 0.1rem solid var(--accent);
+  border-radius: 0.6rem;
+  background: var(--accent);
+  color: white;
+  overflow-wrap: anywhere;
+}
+
+.button:hover {
+  filter: brightness(0.93);
+}
+
+.secondary {
+  background: var(--surface);
+  color: var(--accent);
+}
+
+.tag {
+  align-self: flex-start;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2rem;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* ---------- Task 1: one 6 × 6 grid ---------- */
+
+.composition-page {
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+}
+
+.composition {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+
+  width: 90vmin;
+  aspect-ratio: 1;
+  gap: 0.8vmin;
+  padding: 0.8vmin;
+  background: #20201e;
+}
+
+.blue {
+  grid-column: 1 / 3;
+  grid-row: 1 / 4;
+  background: #396bd7;
+}
+
+.top-white {
+  grid-column: 3 / 7;
+  grid-row: 1 / 2;
+  background: #f1f1f1;
+}
+
+.yellow {
+  grid-column: 3 / 5;
+  grid-row: 2 / 4;
+  background: #f0c400;
+}
+
+.right-white {
+  grid-column: 5 / 7;
+  grid-row: 2 / 5;
+  background: #f1f1f1;
+}
+
+.red {
+  grid-column: 1 / 4;
+  grid-row: 4 / 7;
+  background: #bf2326;
+}
+
+.black {
+  grid-column: 4 / 5;
+  grid-row: 4 / 7;
+  background: #20201e;
+}
+
+.bottom-white {
+  grid-column: 5 / 7;
+  grid-row: 5 / 7;
+  background: #f1f1f1;
+}
+
+/* ---------- Task 2: Flexbox components ---------- */
+
+/* 1. Navigation */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space);
+  padding: 1.25rem;
+  border: 0.1rem solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  min-width: 0;
+}
+
+.nav-links a {
+  overflow-wrap: anywhere;
+}
+
+.nav-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-left: auto;
+}
+
+/* 2. Cards */
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space);
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 15rem;
+  min-width: 0;
+  gap: var(--space);
+  padding: 1.5rem;
+  border: 0.1rem solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.game-card .button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* 3. Pagination */
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+  padding: 1rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+}
+
+.pagination-spacer,
+.result-count {
+  flex: 1 1 10rem;
+}
+
+.page-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 0 1 auto;
+  gap: 0.5rem;
+  margin-inline: auto;
+}
+
+.page-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.page-button {
+  padding: 0.45rem 0.8rem;
+  border: 0.1rem solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.page-button.current {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.result-count {
+  margin-left: auto;
+  text-align: right;
+  color: var(--muted);
+}
+
+/* 4. Comment */
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-weight: bold;
+}
+
+.comment-content {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.comment-content p {
+  margin-top: 0.5rem;
+}
+
+/* 5. Pricing */
+
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 15rem;
+  min-width: 0;
+  gap: var(--space);
+  padding: 1.5rem;
+  border: 0.1rem solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.plan.recommended {
+  padding-block: 2.5rem;
+  border-color: var(--accent);
+  background: #f8f7ff;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.price span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.plan ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.plan .button {
+  margin-top: auto;
+}
+
+/* ---------- Task 3: shared article styling ---------- */
+
+.articles {
+  display: grid;
+  gap: var(--space);
+}
+
+.story {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 0.1rem solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.story img {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.story-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.story h2 {
+  font-size: 1.15rem;
+}
+
+.story p {
+  color: var(--muted);
+}
+
+.story time {
+  margin-top: auto;
+  padding: 0 1rem 1rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* Mode 1: automatically adjusting columns */
+
+.layout-grid {
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+/* Mode 2: one column; each article is a flex row */
+
+.layout-list {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.layout-list .story {
+  flex-direction: row;
+  align-items: center;
+}
+
+.layout-list .story img {
+  width: 22%;
+  flex: 0 0 22%;
+}
+
+.layout-list .story-content {
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+.layout-list .story time {
+  flex: 0 0 15%;
+  margin-top: 0;
+  margin-left: auto;
+  padding: 0.5rem;
+  text-align: right;
+}
+
+/* Mode 3: lead article spans two columns and two rows */
+
+.layout-magazine {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.layout-magazine .story:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.layout-magazine .story:first-child h2 {
+  font-size: clamp(1.3rem, 3vw, 2.2rem);
+}
+
+.layout-magazine .story-content {
+  padding: clamp(0.4rem, 1.5vw, 1rem);
+}
+
+.layout-magazine .story time {
+  padding: 0 clamp(0.4rem, 1.5vw, 1rem) 0.75rem;
+}
+/* Simpler appearance for Tasks 2 and 3 */
+
+:root {
+  --background: #ffffff;
+  --surface: #ffffff;
+  --text: #222222;
+  --muted: #666666;
+  --accent: #245a96;
+  --accent-light: #eeeeee;
+  --line: #cccccc;
+  --space: 1rem;
+  --radius: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.page {
+  padding: 4%;
+}
+
+.page-heading {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #cccccc;
+}
+
+.page-heading h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.eyebrow {
+  display: none;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+a {
+  color: #245a96;
+}
+
+.button {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #245a96;
+  border-radius: 3px;
+  background: #245a96;
+  color: white;
+}
+
+.button:hover {
+  background: #1b4676;
+  filter: none;
+}
+
+.button.secondary {
+  background: #ffffff;
+  color: #245a96;
+}
+
+.button.secondary:hover {
+  background: #eeeeee;
+}
+
+.tag {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #666666;
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+/* Task 2 */
+
+.navbar {
+  padding: 1rem;
+  background: #f2f2f2;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+}
+
+.logo {
+  color: #222222;
+  font-size: 1.2rem;
+}
+
+.nav-links a {
+  color: #333333;
+}
+
+.game-card {
+  padding: 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+}
+
+.pagination {
+  padding: 1rem 0;
+  border-radius: 0;
+}
+
+.page-button {
+  border-radius: 2px;
+}
+
+.comment {
+  padding: 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+}
+
+.avatar {
+  background: #dddddd;
+  color: #333333;
+}
+
+.plan {
+  padding: 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+}
+
+.plan.recommended {
+  padding-block: 2rem;
+  border: 2px solid #245a96;
+  background: #f5f7fa;
+}
+
+.recommended .tag {
+  color: #245a96;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 1.6rem;
+}
+
+/* Task 3 */
+
+.story {
+  border: 1px solid #cccccc;
+  border-radius: 0;
+}
+
+.story h2 {
+  font-size: 1.1rem;
+}
+
+.story p {
+  color: #444444;
+}
+
+.story time {
+  color: #666666;
+}
+
+.layout-magazine .story:first-child h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+}
